@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参</title>
+    <style type="text/css">
+        #gjh{
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: black;
+            color: white;
+            font-size: 20px;
+        }
+        input,button{
+            width: 200px;
+            height: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+<label>属性名<input type="text" id="three"></label><p></p>
+<br>
+<label>属性值<input type="text" id="four"></label>
+    <br>
+    <button type="button" onclick="enSure()" id="one">确定</button>
+    <button type="button" onclick="reSet()" id="two">重置</button>
+</div>
+<div id="gjh">
+    你可以试一试哟
+</div>
+<script type="application/javascript">
+    function enSure() {
+        var two = document.getElementById("three").value ;
+        var three = document.getElementById("four").value ;
+        var one = document.getElementById("gjh");
+        if(two=="width")
+        {
+            one.style.width = three+"px";
+        }
+        else if (two=="height")
+        {
+            one.style.height = three+"px";
+        }
+        else if (two=="color")
+        {
+            one.style.backgroundColor = three;
+        }
+        else{
+            document.getElementsByTagName("p")[0].innerHTML="输入错误，请重新输入";
+        }
+
+
+
+    }
+    function reSet() {
+        var one = document.getElementById("gjh");
+        one.style.backgroundColor = "black";
+        one.style.fontSize = 20+"px";
+        one.style.width = 200+"px";
+        one.style.height = 200+"px";
+    }
+</script>
+</body>
+</html>

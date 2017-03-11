@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        button{
+            height: 150px;
+            width: 150px;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+<button type="button" onmousedown="adDstart()" onmouseup="adDone()"></button>
+</body>
+<script type="application/javascript">
+    var one = 0;
+    function adDone() {
+        one++;
+        var eleMent = document.getElementsByTagName("button")[0];
+        var two = document.createTextNode(one);
+        eleMent.appendChild(two);
+
+    }
+    function adDstart() {
+        var eleMent = document.getElementsByTagName("button")[0];
+        eleMent.removeChild(eleMent.firstChild);
+    }
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+
+        }
+    </style>
+</head>
+<body>
+<label onmouseover="shubiao()" onmouseout="shubiao2()"><input type="checkbox" >两周免登陆</label>
+<div id="haha">请不要在公共场合使用此选项</div>
+</body>
+<script type="application/javascript">
+    function shubiao() {
+        var one = document.getElementById("haha");
+        one.style.display = "block"
+        }
+    function shubiao2() {
+            var one = document.getElementById("haha");
+            one.style.display = "none"
+        }
+        shubiao2();
+</script>
+</html>

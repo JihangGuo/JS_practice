@@ -1,0 +1,9 @@
+body{
+    text-align: center;
+}
+#one{
+    background-color: black;
+    height: 100px;
+    width: 100px;
+    margin: 10px auto;
+}

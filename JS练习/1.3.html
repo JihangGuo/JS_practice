@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参</title>
+    <style type="text/css">
+        input{
+            height: 20px;
+            width: 150px;
+            margin-top: 20px;
+        }
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="one">
+    <br>
+    <input type="text" id="two">
+    <br>
+    <button type="button" onclick="giveShu()">传参</button>
+</div>
+
+<script type="application/javascript">
+    function giveShu() {
+        var one = document.getElementById("one").value;
+        alert(one);
+        var two = document.getElementById("two").value;
+        alert(two);
+
+    }
+</script>
+</body>
+</html>

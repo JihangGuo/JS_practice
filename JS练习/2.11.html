@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预览效果</title>
+    <style type="text/css">
+        body,html{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        #one{
+            width: auto;
+            height: auto;
+        }
+        #two{
+            width: 400px;
+            height: 400px;
+            background-color: white;
+        }
+        #three{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+    <img src="css/1.jpg"><img src="css/2.jpg">
+</div>
+<div id="two">
+<img id="three">
+</div>
+<script type="application/javascript">
+    function oNe() {
+        var one = document.getElementsByTagName("img");
+        for( var i = 0 ; i<=1 ; i++ )
+        {
+            one[i].onmouseover=function () {
+                var img = new Image;
+                img.src = this.src;
+                var two = document.getElementsByTagName("img")[2];
+                two.src = img.src;
+                two.style.display = "block";
+            }
+            /*one[i].onmouseout=function () {
+                var two = document.getElementsByTagName("img")[2];
+                two.style.display = "none";
+            }*/
+        }
+
+    }oNe();
+</script>
+</body>
+</html>

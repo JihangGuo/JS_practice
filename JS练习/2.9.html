@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单一按钮显示与隐藏</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            background-color: pink;
+            width: 250px;
+            margin: 0 auto;
+        }
+        li{
+            list-style-type: none;
+            font-size: 25px;
+        }
+        #gjh{
+            font-size: 35px;
+            background-color: #2aabd2;
+            width: 100%;
+        }
+        div{
+            width: 100%;
+
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li id="gjh">播放列表...</li>
+        <li>玩家之徒-123</li>
+        <li>猜不透-456</li>
+        <li>自导自演-789</li>
+        <li>杀手-000</li>
+    </ul>
+</div>
+<script type="application/javascript">
+    window.onload=function (){
+        var one = document.getElementById("gjh");
+        var shu = 0 ;
+            one.onclick=function () {
+                shu++;
+                if (shu % 2 !== 0) {
+                    for (var i = 1; i <= 4; i++) {
+                        var two = document.getElementsByTagName("li")[i];
+                        two.style.display = "block";
+                    }
+                }
+                else {
+                    for (var a = 1; a <= 4; a++) {
+                        var three = document.getElementsByTagName("li")[a];
+                        three.style.display = "none";
+                    }
+                }
+            }
+                function hiDDen() {
+                    for (var b = 1; b <= 4; b++) {
+                        var two = document.getElementsByTagName("li")[b];
+                        two.style.display = "none";
+                    }
+                }
+        hiDDen();
+
+        function  xianshi() {
+            var hah = document.getElementsByTagName("li");
+            for (var c = 1; c <= hah.length; c++) {
+                hah[c].onmouseover=function () {
+                    this.style.backgroundColor = "yellow";
+                }
+                hah[c].onmouseout=function () {
+                    this.style.backgroundColor = "pink";
+                }
+            }
+        }xianshi();
+    };
+</script>
+</body>
+</html>

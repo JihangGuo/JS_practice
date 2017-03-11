@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面加载后累加</title>
+</head>
+<body>
+<div></div>
+</body>
+<script type="application/javascript">
+    window.onload = function () {
+        var a = 0;
+        var sum = setInterval(updateNum,1000);
+        updateNum();
+        function updateNum() {
+            a++;
+            document.getElementsByTagName("div")[0].innerHTML = a ;
+        }
+
+    }
+
+</script>
+</html>

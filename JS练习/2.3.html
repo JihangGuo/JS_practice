@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求和</title>
+    <style type="text/css">
+        input{
+            width: 400px;
+            height: 40px;
+            font-size: 30px;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="one">
+<br>
+<button type="button" id="two" onclick="touch()">求和</button>
+<div id="three">结果：</div>
+</body>
+<script type="application/javascript">
+
+    function touch() {
+        var sum = 0;
+        var stRRin = document.getElementsByTagName("input")[0].value.split("+");
+        /*for( i in stRRin)
+        {
+            sum += parseInt(stRRin[i]);
+        }
+        document.getElementById("three").innerHTML = "结果："+ sum ;*/
+        /*alert(stRRin[1]);*/
+        for ( var i = 0 ; i <= stRRin.length-1 ; i++ )
+        {
+            console.log(stRRin[i]);
+            sum += parseInt(stRRin[i]) ;
+            console.log(sum);
+        }
+        document.getElementById("three").innerHTML = "结果："+ sum ;
+    }
+</script>
+</html>

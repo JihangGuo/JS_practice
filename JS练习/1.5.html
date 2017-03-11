@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style type="text/css">
+        /*onMouseDown 按下鼠标时触发
+        onMouseOver 鼠标经过时触发
+        onMouseUp 按下鼠标松开鼠标时触发
+        onMouseOut 鼠标移出时触发
+        onMouseMove 鼠标移动时触*/
+        div{
+            height: 100px;
+            width: 100px;
+            background-color: #2aabd2;
+        }
+
+    </style>
+</head>
+<body>
+<div id="iamdiv" onmouseover="shubiao()" onmouseout="shubiao2()"></div>
+</body>
+<script type="application/javascript">
+    function shubiao() {
+        var haha = document.getElementById("iamdiv");
+        haha.style.backgroundColor = "pink";
+    }
+    function shubiao2() {
+        var haha = document.getElementById("iamdiv");
+        haha.style.backgroundColor = "#2aabd2";
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用循环将div染色</title>
+    <style type="text/css">
+        #gjh div{
+            margin-left: 5px;
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="gjh">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div>
+    <button type="button" onclick="touchabc()">点击变色</button>
+</div>
+<script type="application/javascript">
+    var x=0;
+    function touchabc() {
+        x=x+1;
+        alert(x);
+        if(x%2==0) {
+             function touchabcd() {
+                var onee = document.getElementById("gjh").getElementsByTagName("div");
+                for (var i = 0; i < onee.length; i++)
+                    onee[i].style.backgroundColor = "black";
+            }touchabcd();
+        }
+        else{
+            function touchabcde() {
+                var onee = document.getElementById("gjh").getElementsByTagName("div");
+                for (var i = 0; i < onee.length; i++)
+                    onee[i].style.backgroundColor = "blue";
+            }touchabcde();
+        }
+
+    }
+</script>
+</body>
+</html>

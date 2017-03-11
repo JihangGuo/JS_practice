@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input{
+            width: 80px;
+            height: 30px;
+            font-size: 20px;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<input type="number">
+<strong>和</strong>
+<input type="number">
+<strong>谁大=</strong>
+<span> </span>
+<button type="button" onclick="bijiao()">比较</button>
+</body>
+<script type="application/javascript">
+    function bijiao() {
+        var one = document.getElementsByTagName("input")[0];
+        var two = one.value;
+        var three = document.getElementsByTagName("input")[1];
+        var four = three.value;
+        var five = document.getElementsByTagName("span")[0];
+        if ( two > four )
+        {
+            alert(two)
+            five.innerHTML = two;
+        }
+
+        else
+            alert(four)
+            five.innerHTML = four;
+    }
+
+
+</script>
+</html>

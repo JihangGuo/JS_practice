@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易JS年历</title>
+    <style type="text/css">
+        *{
+            color: white;
+            font-size: 40px;
+        }
+        td{
+            text-align: center;
+            background-color: #2E2F30;
+            height: 100px;
+            width: 100px;
+        }
+        table{
+            background-color: #9d9d9d;
+        }
+    </style>
+</head>
+<body>
+<table cellspacing="20">
+    <tr>
+        <td>1<br>JAN</td>
+        <td>2<br>FER</td>
+        <td>3<br>MAR</td>
+        <td>4<br>APR</td>
+    </tr>
+    <tr>
+        <td>5<br>MAY</td>
+        <td>6<br>JUN</td>
+        <td>7<br>JUL</td>
+        <td>8<br>AUG</td>
+    </tr>
+    <tr>
+        <td>9<br>SEP</td>
+        <td>10<br>OCT</td>
+        <td>11<br>NOV</td>
+        <td>12<br>DEC</td>
+    </tr>
+    <tr>
+        <td colspan="4" id="lalala"></td>
+    </tr>
+</table>
+</body>
+<script type="application/javascript">
+    window.onload=function(){
+        var things = [
+            "元旦：1月1日至3日放假三天。",
+            "春节：2月2日至8日放假7天。",
+            "妇女节：3月8日妇女节，与我无关。",
+            "清明节：4月3日至5日放假3天",
+            "劳动节：4月30日至5月2日放假3天。",
+            "端午节：6月4日至6日放假3天。",
+            "小暑：7月7日小暑。不放假。",
+            "七夕节：8月6日七夕节。不放假。",
+            "中秋节：9月10日至12日放假3天。",
+            "国庆节：10月1日至7日放假7天。",
+            "立冬：11月8日立冬。不放假。",
+            "艾滋病日:12月1日<br>废除奴隶制国际日:12月2日。"
+        ];
+        function getIt() {
+            for(var a = 0; a <= 11; a++ )
+            {
+                var one = document.getElementsByTagName("td")[a];
+                one.onmouseover = function () {
+                    this.style.backgroundColor = "white";
+                    this.style.color = "pink";
+                }
+                one.onmouseout = function () {
+                    this.style.backgroundColor = "#2E2F30";
+                    this.style.color = "white";
+                }
+            }
+        }getIt();
+        function xianshi() {
+            var td = document.getElementsByTagName("td");
+            for( var i = 0 ; i<=11 ; i++)
+            {
+                td[i].index=i;/*这一步就是核心步骤 创建了缩影 就相当于变相的创建了很多副本*/
+                td[i].onmouseover=function () {
+                    document.getElementById("lalala").innerHTML = things[this.index];
+                }
+            }
+            /*var td = document.getElementsByTagName("td");
+            td[0].onmouseover = function () {
+                document.getElementById("lalala").innerHTML = things[0];
+            }
+            td[1].onmouseover = function () {
+                document.getElementById("lalala").innerHTML = things[1];
+            }
+            我对索引的了解就是 动态创建了很多副本存在 可以随时调用*/
+        }xianshi();
+    }
+</script>
+</html>

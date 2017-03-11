@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉选项框</title>
+    <style type="text/css">
+        li{
+            list-style-type: none;
+            border: 1px solid blue;
+            width: 40px;
+        }
+        div{
+            text-align: center;
+
+        }
+        button{
+            text-align: center;
+        }
+        li a:hover{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<button type="button" onclick="toUch()" >输入法</button>
+<div id="main">
+    <ul>
+        <li><a>拼音</a></li>
+        <li><a>五笔</a></li>
+        <li><a>智能</a></li>
+    </ul>
+</div>
+<script type="application/javascript">
+    var click = 0 ;
+    function toUch() {
+        click++;
+        if (click%2!==0)
+        {
+            var two = document.getElementById("main");
+            two.style.display = "block";
+        }
+        else {
+            var two = document.getElementById("main");
+            two.style.display = "none";
+        }
+    }
+    function hiDDen() {
+        var one = document.getElementById("main");
+        one.style.display = "none";
+    }hiDDen();
+
+</script>
+</body>
+</html>

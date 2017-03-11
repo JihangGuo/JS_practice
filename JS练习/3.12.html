@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>typeof</title>
+    <style type="text/css">
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        div{
+            width: 800px;
+            height: 200px;
+            border: black 1px solid;
+            text-align: center;
+
+        }
+        input{
+            height: 40px;
+            width: 120px;
+        }
+        strong{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+<div>
+<input type="text"><strong>+</strong>
+<input type="text"><strong>=</strong>
+<span></span>
+<button type="button" onclick="aDd()">求和</button>
+</div>
+<script type="application/javascript">
+    function aDd() {
+        var one = document.getElementsByTagName("input")[0];
+        var two = parseInt(one.value);
+        var three = document.getElementsByTagName("input")[1];
+        var four = parseInt(three.value);
+        var sum = four + two ;
+        document.getElementsByTagName("span")[0].innerHTML = sum ;
+    }
+    function kEy() {
+        var one = document.getElementsByTagName("input")[0];
+        one.onkeyup = function () {
+            this.value = this.value.replace(/[^\d]/,"")
+        }
+
+    }kEy();
+    /**alert(typeof 123456);
+    alert(typeof "abc");
+    alert(typeof document);**/
+</script>
+</body>
+</html>

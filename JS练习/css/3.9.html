@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style type="text/css">
+        body{
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 50px;
+        }
+        #one{
+            background-color: black;
+            width: 500px;
+            height: auto;
+            text-align: center;
+            margin: 0 auto;
+        }
+        button{
+            margin-top: 50px;
+            width: 300px;
+            height: 50px;
+            background-color: #5cb85c;
+        }
+        input{
+            width: 100px;
+            height: 70px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+<input type="text">分钟
+    <input type="text">秒
+    <button type="button" onclick="stArt()">启动</button>
+</div>
+</body>
+<script type="application/javascript">
+    window.onload=function () {
+        var tiMeone = 1;
+        var tiMetwo = 10 ;
+        document.getElementsByTagName("input")[0].value = tiMeone;
+        document.getElementsByTagName("input")[1].value = tiMetwo;
+    }
+    function stArt() {
+        var tiMeone = 1;
+        var tiMetwo = 10 ;
+        var hah = setInterval(jishi,1000);
+        jishi();
+        function jishi() {
+            tiMetwo--;
+            document.getElementsByTagName("input")[0].value = tiMeone;
+            document.getElementsByTagName("input")[1].value = tiMetwo;
+            if(tiMeone>=0&&tiMetwo>0)
+            {
+            }
+            else if(tiMeone>0&&tiMetwo<=0)
+            {
+                document.getElementsByTagName("input")[0].value = tiMeone--;
+                document.getElementsByTagName("input")[1].value = 10;
+                tiMetwo=10;
+            }
+            else/*(tiMeone==0&&tiMetwo==0)*/
+            {
+                document.getElementsByTagName("input")[0].value = 0;
+                document.getElementsByTagName("input")[1].value = 0;
+                return;
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示框</title>
+    <style type="text/css">
+        div{
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 10px;
+            padding: 10px;
+            background-color: #9d9d9d;
+            text-align: center;
+        }
+        #one{
+            border: 1px solid black;
+            width: auto;
+            height: auto;
+            background-color: white;
+        }
+        img{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+    <h1>名车车标展</h1><img>
+    <div>BMW<br>宝马</div><img src="css/1.jpg">
+    <div>Alfa Romeo<br>阿尔法-罗密欧</div><img src="css/2.jpg">
+    <div>Skoda<br>斯柯达</div><img src="css/3.jpg">
+    <div>Volkswagen<br>大众</div><img src="css/4.jpg">
+    <div>Saab<br>萨布</div><img src="css/5.jpg">
+</div>
+<script type="application/javascript">
+    function hiDDen() {
+        var two = document.getElementsByTagName("img");
+        for(var d = 0; d<=two.length-1 ; d++)
+            two[d].style.display = "none";
+    }hiDDen();
+    function oNe() {
+        var one = document.getElementsByTagName("div");
+        for( var i = 1 ; i<=one.length-1 ; i++ )
+        {
+            one[i].index = i;
+            one[i].onmouseover=function () {
+                this.style.display="none";
+                var two = document.getElementsByTagName("img")[this.index];
+                two.style.display = "block";
+            }
+        }
+    }oNe();
+    function tWo() {
+        var one = document.getElementsByTagName("div");
+        for( var i = 1 ; i<=one.length-1 ; i++ )
+        {
+            one[i].index = i;
+            one[i].onmouseout=function () {
+                this.style.display="block";
+                var two = document.getElementsByTagName("img")[this.index];
+                two.style.display = "none";
+            }
+        }
+    }tWo();
+</script>
+</body>
+</html>

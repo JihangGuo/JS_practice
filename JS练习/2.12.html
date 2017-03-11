@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项框练习</title>
+    <style type="text/css">
+        input{
+            height: 30px;
+            width: 30px;
+            margin: 20px;
+        }
+        li{
+            list-style-type: none;
+        }
+        ul{
+            background-color: pink;
+            width: 200px;
+        }
+        #allcheck,#noallcheck{
+             background-color: #2aabd2;
+         }
+    </style>
+</head>
+<body>
+<ul>
+    <li id="allcheck"><input type="checkbox" onclick="chEck()">全选</li>
+    <li id="noallcheck"><input type="checkbox" onclick="nochEck()">反选</li>
+    <li><input type="checkbox"></li>
+    <li><input type="checkbox"></li>
+    <li><input type="checkbox"></li>
+    <li><input type="checkbox"></li>
+</ul>
+<script type="application/javascript">
+    function chEck() {
+        var one = document.getElementsByTagName("input")[0];
+        var two = one.checked;
+        if( two == true )
+        {
+            var allcheck = document.getElementsByTagName("input");
+            for( var i = 2; i<=5 ; i++ )
+                allcheck[i].checked = true;
+        }
+        else
+        {
+            var allcheck = document.getElementsByTagName("input");
+            for( var i = 2; i<=5 ; i++ )
+                allcheck[i].checked = false;
+        }
+    }
+    function nochEck() {
+        var three = document.getElementsByTagName("input")[1];
+        var four = three.checked;
+            var allcheck = document.getElementsByTagName("input");
+            for( var i = 2; i<=5 ; i++ )
+                allcheck[i].checked = !allcheck[i].checked;
+    }
+</script>
+</body>
+</html>
