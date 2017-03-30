@@ -1,0 +1,70 @@
+html,body {
+    margin: 0;
+    padding: 0;
+}
+
+.the_map {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.the_info {
+    display: inline-block;
+    position: relative;
+    top: 80px;
+    right: 40px;
+}
+
+.turn_last, .turn_next {
+    display: inline-block;
+    background-color: white;
+    border-radius: 40px;
+}
+
+.turn_last {
+    float: left;
+    position: relative;
+    top: 250px;
+}
+
+.turn_next {
+    float: right;
+    position: relative;
+    bottom: 250px;
+}
+
+.the_pic {
+    display: inline-block;
+}
+
+.the_pic img{
+    display: inline-block;
+}
+
+/*略缩图样式*/
+.the_min {
+    position: relative;
+    bottom: 100px;
+    width: 480px;
+    margin: 0 auto;
+}
+
+.the_min ul {
+    width: 100%;
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.the_min a {
+    float: left;
+}
+
+.the_min li {
+    float: left;
+    width: 60px;
+    margin: 10px;
+    background-color: white;
+}

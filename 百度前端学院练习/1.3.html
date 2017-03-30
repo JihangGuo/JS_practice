@@ -1,0 +1,112 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+</ul>
+
+<ul id="resort">
+    <!--
+    <li>第一名：北京空气质量：<b>90</b></li>
+    <li>第二名：北京空气质量：<b>90</b></li>
+    <li>第三名：北京空气质量：<b>90</b></li>
+     -->
+
+</ul>
+
+<button id="sort-btn">排序</button>
+
+<script type="text/javascript">
+    function getData() {
+
+        //创建二位数组
+        var data = Array();
+
+        for( var a = 0; a<=6; a++)
+        {
+            data[a]= Array();
+        }
+
+
+        var the_source = document.getElementById("source");
+        for (var i = 0; i<=6; i++ )
+        {
+            //获取值
+            var data_num = the_source.getElementsByTagName("li")[i].innerHTML;
+            //正则筛选
+            var turn_num = /[^\w<>][^\w<>]/g ;
+            var new_num =  turn_num.exec(data_num);
+            data[i].push(new_num);
+            //正则筛选
+            var turn_num = /\d\d/g;
+            var new_num = turn_num.exec(data_num);
+            data[i].push(new_num);
+        }
+        return data;
+
+
+    }
+
+    function sortAqiData(data) {
+        //转换汉字字符的数子
+        for ( var x=0; x<=6; x++)
+        {
+            Number(data[x][1]);
+        }
+        //二维数组排序 冒泡排序
+        for( var y = 0; y<=6; y++)
+        {
+            for ( var x = 0; x<=5; x++)
+            {
+                if ( data[x][1] < data[x+1][1])
+                {
+                    data_copy = data[x];
+                    data[x] = data[x+1];
+                    data[x+1] = data_copy;
+                }
+            }
+        }
+        return data;
+
+    }
+
+    function render(data)
+    {
+        var show_sort = document.getElementById("resort");
+        var the_text = "</br>";
+        for (var j = 0; j<=6; j++)
+        {
+            the_text = the_text + "<li>第一名&nbsp" + data[j][0] + "空气质量：<b>" + data[j][1] + "</b>" + "</li>";
+        }
+        show_sort.innerHTML = the_text;
+    }
+
+    function btnHandle() {
+        var aqiData = getData();//获取数据
+        aqiData = sortAqiData(aqiData);//排序数据
+        render(aqiData);//输出数据
+    }
+
+    function init() {
+
+        // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
+        document.getElementById("sort-btn").onclick=function () {
+            btnHandle();
+        }
+    }
+
+    init();
+</script>
+</body>
+</html>

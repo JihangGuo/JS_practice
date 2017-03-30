@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .main_div {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .main_div input {
+            width: 200px;
+            height: 50px;
+            font-size: 40px;
+            color: darkcyan;
+            float: left;
+        }
+        .button button{
+            float: left;
+            width: 120px;
+            height: 40px;
+            margin-left: 10px;
+            background-color: cornflowerblue;
+            border: none;
+            font-size: 25px;
+        }
+        .the_num {
+            width: 800px;
+            height: 200px;
+            background-color: black;
+            float: left;
+            color: coral;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="main_div">
+    <input class="the_input">
+    <div class="button">
+        <button class="left_in">左侧入</button>
+        <button class="right_in">右侧入</button>
+        <button class="left_out">左侧出</button>
+        <button class="right_out">右侧出</button>
+    </div>
+    <div class="the_num"></div>
+</div>
+
+
+<script>
+    var tid;
+    var data_one = [];
+    function get_text() {
+        var true_num;
+        var the_text = document.getElementsByClassName("the_input");
+        true_num = the_text[0].value;
+        return true_num;
+    }
+
+    function touch_thing() {
+        var the_b = document.getElementsByTagName("button");
+        var a;
+        var the_data;
+        for (var i = 0; i <= 3; i++)
+        {
+            the_b[i].onclick = function (a) {
+                return function () {
+                    if( a == 0)
+                    {
+                        tid = 1;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+
+                    else if( a == 1)
+                    {
+                        tid = 2;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+
+                    else if( a == 2)
+                    {
+                        tid = 3;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+                    else
+                    {
+                        tid = 4;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+                }
+            }(i)
+
+        }
+    }touch_thing();
+
+    function show_thing(the_data,tid) {
+
+        var data_area = document.getElementsByClassName("the_num");
+        if( tid == 1)
+        {
+            data_one.unshift(the_data);
+        }
+        else if( tid == 2)
+        {
+            data_one.push(the_data);
+        }
+        else if( tid == 3)
+        {
+            data_one.shift(the_data);
+        }
+        else
+        {
+            data_one.pop(the_data);
+        }
+        data_area[0].innerHTML = data_one;
+    }
+
+</script>
+</body>
+</html>
