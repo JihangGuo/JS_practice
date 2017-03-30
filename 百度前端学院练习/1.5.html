@@ -5,7 +5,7 @@
     <title>Title</title>
     <style type="text/css">
         .main_div {
-            width: 800px;
+            width: 1000px;
             margin: 0 auto;
         }
         .main_div input {
@@ -19,7 +19,7 @@
             float: left;
             width: 120px;
             height: 40px;
-            margin-left: 10px;
+            margin: 10px;
             background-color: cornflowerblue;
             border: none;
             font-size: 25px;
@@ -32,6 +32,14 @@
             color: coral;
             font-size: 50px;
         }
+        .show {
+            display: inline-block;
+            margin-top: 30px;
+            margin-left: 5px;
+            width: 10px;
+            background-color: coral;
+            border: 1px white solid;
+        }
     </style>
 </head>
 <body>
@@ -42,29 +50,42 @@
         <button class="right_in">右侧入</button>
         <button class="left_out">左侧出</button>
         <button class="right_out">右侧出</button>
+        <button class="sort_bar">排序</button>
     </div>
-    <div class="the_num"></div>
+    <div class="the_num">
+
+    </div>
 </div>
 
-
 <script>
+    //我的编写习惯是对有可能全局都要使用的变量进行定义　这样能够使查阅代码时能够更清晰　
     var tid;
     var data_one = [];
+    //对输入框的值进行提取
     function get_text() {
         var true_num;
         var the_text = document.getElementsByClassName("the_input");
         true_num = the_text[0].value;
-        return true_num;
+        //进行输入的正则效验
+        var Rex = /\d{2,3}/gi;
+        var new_num = Rex.exec(true_num);
+        if( new_num > 100 || new_num < 10)
+        {
+            alert("超出输入数值范围，请重新输入");
+            return false;//在对函数返回值进行定义从而使函数间的联系更清晰，郭老大曾经说过：多设返回值来进行检验差错是一种很好的习惯
+        }
+        return new_num;
     }
 
+    //对按钮进行事件设置
     function touch_thing() {
-        var the_b = document.getElementsByTagName("button");
+        var the_b = document.getElementsByTagName("button");//给点击按钮添加事件
         var a;
         var the_data;
-        for (var i = 0; i <= 3; i++)
+        for (var i = 0; i <= 4; i++)//又是一个小小的闭包事例
         {
             the_b[i].onclick = function (a) {
-                return function () {
+                return function () {//通过返回　来使函数外部能够与内部数据进行沟通　我喜欢对闭包里进行多个变量的设置，这样能够尽量的避免函数内部发生不必要的错误
                     if( a == 0)
                     {
                         tid = 1;
@@ -85,9 +106,15 @@
                         the_data = get_text();
                         show_thing(the_data,tid);
                     }
-                    else
+                    else if( a == 3)
                     {
                         tid = 4;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+                    else
+                    {
+                        tid = 5;
                         the_data = get_text();
                         show_thing(the_data,tid);
                     }
@@ -97,28 +124,77 @@
         }
     }touch_thing();
 
-    function show_thing(the_data,tid) {
+    //对输入的数据进行数据化显示
+    function showby_block(blockdata) {
+        var block = document.getElementsByClassName("the_num");
+        var blockstyle = "";//进行初始化，避免出现不必要的显示
+        var data;
+        for ( var x = 0; x<=blockdata.length-1; x++)
+        {
+            data = blockdata[x];
+            blockstyle = blockstyle + "<div class='show' style='height: " + data + "px '></div>";
+        }
 
-        var data_area = document.getElementsByClassName("the_num");
-        if( tid == 1)
-        {
-            data_one.unshift(the_data);
-        }
-        else if( tid == 2)
-        {
-            data_one.push(the_data);
-        }
-        else if( tid == 3)
-        {
-            data_one.shift(the_data);
-        }
-        else
-        {
-            data_one.pop(the_data);
-        }
-        data_area[0].innerHTML = data_one;
+        block[0].innerHTML = blockstyle;
     }
 
+    //对输入的数据进行判断，通过结婚搜按钮类型决定显示类型
+    function show_thing(the_data,tid) {
+
+        //添加判断环节　判断取值是否规范
+        if (the_data == false)
+        {}
+        else
+        {
+            //添加队列限制判断　超过６０弹窗提醒
+            if ( data_one.length > 59 )
+            {
+                alert("队列超出，不予显示");
+            }
+            else
+            {
+                var data_area = document.getElementsByClassName("the_num");
+                //进行按钮类型判断
+                if( tid == 1)
+                {
+                    data_one.unshift(the_data);
+                }
+                else if( tid == 2)
+                {
+                    data_one.push(the_data);
+                }
+                else if( tid == 3)
+                {
+                    data_one.shift(the_data);
+                }
+                else if( tid == 4)
+                {
+                    data_one.pop(the_data);
+                }
+                else //排序
+                {
+                    var sort_num;
+                    for (var x = 0; x<=data_one.length; x++)
+                    {
+                        for (var y = 0; y<data_one.length-1; y++)
+                        {
+                            if( data_one[y]<data_one[y+1])
+                            {
+                                sort_num = data_one[y];
+                                data_one[y] = data_one[y+1];
+                                data_one[y+1] = sort_num;
+                            }
+                        }
+                    }
+                }
+                showby_block(data_one);
+                //data_area[0].innerHTML = data_one;
+            }
+
+        }
+
+    }
+    /*此次让我深刻感受到了JS函数规范化编写的力量，在写每一部分功能函数时，应该对其进行优化编写，让其做到即使修改了与它相连的部分函数，它的功能依然能够呈现*/
 </script>
 </body>
 </html>

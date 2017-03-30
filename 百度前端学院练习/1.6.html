@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .main_div {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .main_div textarea {
+            width: 200px;
+            height: 50px;
+            font-size: 40px;
+            color: darkcyan;
+            float: left;
+        }
+        .main_div input {
+            margin-left: 50px;
+            width: 200px;
+            height: 50px;
+            font-size: 40px;
+            color: darkcyan;
+            float: left;
+        }
+        .button button{
+            float: left;
+            width: 120px;
+            height: 40px;
+            margin-left: 10px;
+            background-color: cornflowerblue;
+            border: none;
+            font-size: 25px;
+        }
+        .the_num {
+            width: 800px;
+            height: 200px;
+            background-color: black;
+            float: left;
+            color: coral;
+            font-size: 50px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="main_div">
+    <textarea class="the_input"></textarea>
+    <input class="other_input">
+    <div class="button">
+        <button class="left_in">左侧入</button>
+        <button class="right_in">右侧入</button>
+        <button class="left_out">左侧出</button>
+        <button class="right_out">右侧出</button>
+        <button class="find">检索</button>
+    </div>
+    <div class="the_num"></div>
+</div>
+
+
+<script>
+    var tid;
+    var data_one = [];
+    function get_text() {
+        var true_num;
+        var the_text = document.getElementsByClassName("the_input");
+        true_num = the_text[0].value;
+        //对输入进行数组划分 按照,.和空格
+        true_num = true_num.split(/[,. ]/);
+        return true_num;
+    }
+
+    function find_text() {
+        var true_num;
+        var the_text = document.getElementsByClassName("other_input");
+        true_num = the_text[0].value;
+        return true_num;
+    }
+
+    function touch_thing() {
+        var the_b = document.getElementsByTagName("button");
+        var a;
+        var the_data;
+        for (var i = 0; i <= 4; i++)
+        {
+            the_b[i].onclick = function (a) {
+                return function () {
+                    if( a == 0)
+                    {
+                        tid = 1;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+
+                    else if( a == 1)
+                    {
+                        tid = 2;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+
+                    else if( a == 2)
+                    {
+                        tid = 3;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+                    else if( a == 3)
+                    {
+                        tid = 4;
+                        the_data = get_text();
+                        show_thing(the_data,tid);
+                    }
+                    else
+                    {
+                        tid = 5;
+                        the_data = find_text();
+                        show_thing(the_data,tid);
+                    }
+                }
+            }(i)
+
+        }
+    }touch_thing();
+
+    function show_thing(the_data,tid) {
+
+        var data_area = document.getElementsByClassName("the_num");
+        if( tid == 1)
+        {
+            data_one.unshift(the_data);
+        }
+        else if( tid == 2)
+        {
+            data_one.push(the_data);
+        }
+        else if( tid == 3)
+        {
+            data_one.shift(the_data);
+        }
+        else if( tid == 4)
+        {
+            data_one.pop(the_data);
+        }
+        else
+        {
+            //the_data检索值　data_one区域值
+            for(var x = 0; x<=data_one.length-1; x++)
+            {
+                var Re = new RegExp(the_data);
+                var lalala = Re.exec(data_one[x]);
+                //进行正则匹配　包含查询则加粗
+                if(lalala!== null)
+                {
+                    data_one[x] = "<b style='color: seagreen'>" + data_one[x] +"</b>";
+                }
+                else//重新匹配时取消加粗
+                {
+                    data_one[x] = data_one[x].toString().replace(/[(<b style='color: seagreen'>)(</b>)]/g,"");
+                }
+            }
+
+
+        }
+        data_area[0].innerHTML = data_one;
+    }
+
+</script>
+</body>
+</html>
